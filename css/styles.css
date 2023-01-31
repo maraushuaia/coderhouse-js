@@ -78,8 +78,8 @@ input[type=number] {
 }
 
 .icon-inicio-app{
-  width: 6.5rem;
-  height: 6.5rem;
+  width: 4.5rem;
+  height: 4.5rem;
   fill: #c52b78;
 }
 
@@ -96,9 +96,11 @@ header .ro-nav {
       font-size: 1.2em;
       justify-content: end; }
       header .ro-nav .navbar-collapse .font-menu:hover {
-        border-bottom: 1.6px solid #ffffff; }
+        background-color: #00B49B;
+        border-radius: 0.2em;}
     header .ro-nav .navbar-collapse .activo {
-      border-bottom: 1.6px solid #ffffff; }
+      background-color: #00B49B;
+      border-radius: 0.2em;}
 
 /*FOOTER - Copyright y Redes Sociales*/
 footer .social {
