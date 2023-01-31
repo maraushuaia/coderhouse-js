@@ -118,4 +118,3 @@ const guardarDBDocumentosLS = (baseDocumentos, ultimoDocumento) =>{
 };
 
 enviarDescargo();
-
