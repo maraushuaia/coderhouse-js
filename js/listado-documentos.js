@@ -32,7 +32,7 @@ const listadoDocumentosEnviados = () => {
                                     <td style="width: 20%;">${documento.fechaEnvio}</td>
                                     <td style="width: 15%;">${documento.tipoDocumento}</td>
                                     <td style="width: 53%;">${documento.mensaje}</td>
-                                    <td><a href="#"><img class="icon-files" src="../img/delete-icons.svg" alt="" onclick="eliminarDescargo(${documento.idCausa}, usuario())"></a></td>
+                                    <td><a href="#"><img class="icon-files" src="../img/delete-icons.svg" alt="" onclick="eliminarDescargo(${documento.idDocumento}, ${documento.idCausa})"></a></td>
                                 </tr>
                             </tbody>
                         </table>

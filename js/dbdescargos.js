@@ -1,8 +1,10 @@
 const baseDocumentos = [];
 const documentosEnUnaCausa = [];
+const indiceDocumentos = [];
 
 class documento {
-    constructor(idCausa, cuil, email, domicilioReal, mensaje, tipoDocumento, archivo, fechaEnvio) {
+    constructor(idDocumento, idCausa, cuil, email, domicilioReal, mensaje, tipoDocumento, archivo, fechaEnvio) {
+        this.idDocumento = idDocumento;
         this.idCausa = idCausa;
         this.cuil = cuil;
         this.email = email;
@@ -32,18 +34,31 @@ const buscarDescargosCausa = (idCausa, cuil) => {
     }
 }
 
-const eliminarDescargo = (idCausa, cuil) => {
+const eliminarDescargo = (idDocumento, idCausa) => {
     console.log("Entró al proceso de eliminar Documento.");
     
-    let posicion = documentosEnUnaCausa.findIndex(eliminar =>
-         ((eliminar.idCausa === idCausa) && (eliminar.cuil === cuil)))
-    
-    console.log("Posición encontrada? =>", posicion);
+    let dbDocumentos = restaurarDocumentosLS();
 
-    if (posicion > 0) {
-        console.log("Está buscando la posición:", posicion);
-        documentosEnUnaCausa.splice(posicion,1);
+    let posicion = dbDocumentos.findIndex(eliminar =>
+        ((eliminar.idDocumento === idDocumento) && (eliminar.idCausa === idCausa)))
+    
+    if (posicion >= 0) {
+        console.log("Está buscando la posición dentro del []:", posicion);
+        dbDocumentos.splice(posicion,1);
+        console.log("Documentos en Causa Actualizado => ",dbDocumentos);
+        localStorage.setItem("documentos", JSON.stringify(dbDocumentos));
+        console.log("Documentos de DB => ", baseDocumentos);
     }
+}
+
+const creaIndiceDocumento = () =>{
+    let indiceActual = JSON.parse(localStorage.getItem("indice"));
+    console.log("Indice actual en LS => ", indiceActual);
+    let siguienteIndice = indiceActual + 1;
+    console.log("Nuevo Indice => ", siguienteIndice);
+    localStorage.setItem("indice", JSON.stringify(siguienteIndice));
+    console.log("Indice almacenado en SL =>", siguienteIndice);
+    return siguienteIndice;
 }
 
 const causaSeleccionada = () =>{
@@ -67,7 +82,7 @@ const enviarDescargo = () => {
 };
 
 const enviarFormulario = (email, domicilioReal, mensaje, tipoDocumento, archivo, fechaEnvio) => {
-    let almacenar = new documento(causaSeleccionada(),usuario(),email, domicilioReal, mensaje, tipoDocumento, archivo, fechaEnvio);
+    let almacenar = new documento(creaIndiceDocumento(),causaSeleccionada(),usuario(),email, domicilioReal, mensaje, tipoDocumento, archivo, fechaEnvio);
     almacenar.guardarDescargo(almacenar);
     console.log("Capturo Mensaje y almaceno como Objeto: =>",almacenar);
     guardarDBDocumentosLS(baseDocumentos, almacenar);
