@@ -1,95 +1,89 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Juzgado - Descargo</title>
-    <meta name="description" content="Sitio web del Juzgado de Faltas de San Juan, acceso al portal"/>
-    <meta name="keywords" content="Acceso al portal, pago de multas, descargos"/>
-    <meta name="author" content="Rodrigo Muñoz"/>
-    <meta name="copyright" content="Rodrigo Muñoz"/>
-    <link rel="shortcut icon" href="../img/favicon.png">
-    <link href="../css/bootstrap-rodrigo.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
-  </head>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Juzgado - Descargo</title>
+        <meta name="description" content="Sitio web del Juzgado de Faltas de San Juan, acceso al portal"/>
+        <meta name="keywords" content="Acceso al portal, pago de multas, descargos"/>
+        <meta name="author" content="Rodrigo Muñoz"/>
+        <meta name="copyright" content="Rodrigo Muñoz"/>
+        <link rel="shortcut icon" href="../img/favicon.png">
+        <link href="../css/bootstrap-rodrigo.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/styles.css">
+    </head>
 
-  <body>
-      <header>
-          <div id="encabezado"></div>
-      </header>
+    <body>
+        <header>
+            <div id="encabezado"></div>
+        </header>
 
-      <main>
-        <div class="encabezado-pagina">
-            <h2>DESCARGO</h2>
-        </div>
-
-        <div >
-            <div class="container mt-5 fondo-rosado p-5">
-                <h3><strong>Registro de Correos</strong></h3>
-                <span>A continuación te listamos los correos que hemos recibido de tu parte:</span>
-         
-                <div id="documentosEnviados">
-
-                </div>    
+        <main>
+            <div class="encabezado-pagina">
+                <h2>DESCARGO</h2>
             </div>
-                
-        </div>
-            
-        
 
-        <form class="pt-5 pb-5" id="enviaDescargo" method="GET" action="#">
-            <div class="container fondo-rosado p-5">
-                <div class="mb-4">
-                    <h3><strong>Formulario para enviar información:</strong></h3>
-                </div>
-                
-                <div class="mb-3">
-                    <select id="tipoContacto" name="infoTipoContacto" class="form-control" required>
-                        <option value="0" disabled selected>Selecciona una opción</option>
-                        <option value="Consulta">Consulta</option>
-                        <option value="Aporta Documentacion">Aporta Documentacion</option>
-                        <option value="Efectua Descargo">Efectua Descargo</option>
-                    </select>
-                </div>
-
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Constituí un domicilio electrónico</label>
-                    <input type="email" class="form-control" id="formEmail" placeholder="tucorreoelectronico@ejemplo.com" required>
-                </div>
-
-                <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">Domicilio real</label>
-                    <input type="text" class="form-control" id="formDomicilioReal" placeholder="Ingrese el domicilio donde deberíamos llevar documentación física" required>
-                </div>
+            <div >
+                <div class="container mt-5 fondo-rosado p-5">
+                    <h3><strong>Registro de Correos</strong></h3>
+                    <span>A continuación te listamos los correos que hemos recibido de tu parte:</span>
             
-                <div class="mb-3">
-                    <label for="message">Consulta</label>
-                    <textarea class="form-control" id="formMensaje" name="message" rows="6" placeholder="Detallanos tu descargo lo más ampliamente posible." required></textarea>
+                    <div id="documentosEnviados"></div>    
                 </div>
-            
-                <label for="formFile" class="form-label">Adjuntar archivo</label>
-                <input class="form-control" type="file" id="formArchivo">
             </div>
-            <div class="col-12 gap-2 mx-auto text-center pt-3">
-            <button class="btn ro-btn-light mb-3 px-5" type="submit" onclick="enviarDescargo">Enviar</button>
-            <a class="col-6 mx-2" href="./antecedentes.html"><button class="btn btn-secondary mb-3 px-5" type="button">Volver</button></a>
-        </div>
-        </form>
-      </main>
 
+            <form class="pt-5 pb-5" id="enviaDescargo" method="GET" action="#">
+                <div class="container fondo-rosado p-5">
+                    <div class="mb-4">
+                        <h3><strong>Formulario para enviar información:</strong></h3>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <select id="tipoContacto" name="infoTipoContacto" class="form-control" required>
+                            <option value="0" disabled selected>Selecciona una opción</option>
+                            <option value="Consulta">Consulta</option>
+                            <option value="Aporta Documentacion">Aporta Documentacion</option>
+                            <option value="Efectua Descargo">Efectua Descargo</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Constituí un domicilio electrónico</label>
+                        <input type="email" class="form-control" id="formEmail" placeholder="tucorreoelectronico@ejemplo.com" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Domicilio real</label>
+                        <input type="text" class="form-control" id="formDomicilioReal" placeholder="Ingrese el domicilio donde deberíamos llevar documentación física" required>
+                    </div>
+                
+                    <div class="mb-3">
+                        <label for="message">Consulta</label>
+                        <textarea class="form-control" id="formMensaje" name="message" rows="6" placeholder="Detallanos tu descargo lo más ampliamente posible." required></textarea>
+                    </div>
+                
+                    <label for="formFile" class="form-label">Adjuntar archivo</label>
+                    <input class="form-control" type="file" id="formArchivo">
+                </div>
+                <div class="col-12 gap-2 mx-auto text-center pt-3">
+                    <button class="btn ro-btn-light mb-3 px-5" type="submit" onclick="enviarDescargo">Enviar</button>
+                    <a class="col-6 mx-2" href="./antecedentes.html"><button class="btn btn-secondary mb-3 px-5" type="button">Volver</button></a>
+                </div>
+            </form>
+        </main>
+
+        <footer class="text-lg-start fondo-rosado text-muted">
+            <div id="piedepagina"></div>
+        </footer>
     
-    <footer class="text-lg-start fondo-rosado text-muted">
-      <div id="piedepagina"></div>
-    </footer>
-    
-    <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/global.js"></script>
-    <script src="../js/formato.js"></script>
-    <script src="../js/dbcausas.js"></script>
-    <script src="../js/dbdescargos.js"></script>
-    <script src="../js/causa-detalles.js"></script>
-    <script src="../js/listado-documentos.js"></script>
-</body>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script src="../js/global.js"></script>
+        <script src="../js/formato.js"></script>
+        <script src="../js/dbcausas.js"></script>
+        <script src="../js/dbdescargos.js"></script>
+        <script src="../js/causa-detalles.js"></script>
+        <script src="../js/listado-documentos.js"></script>
+    </body>
 </html>
 
 
