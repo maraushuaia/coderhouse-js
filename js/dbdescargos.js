@@ -43,12 +43,14 @@ const eliminarDescargo = (idDocumento, idCausa) => {
         ((eliminar.idDocumento === idDocumento) && (eliminar.idCausa === idCausa)))
     
     if (posicion >= 0) {
-        console.log("Está buscando la posición dentro del []:", posicion);
+        console.log("Se encontró el documento en la posición: ", posicion);
         dbDocumentos.splice(posicion,1);
-        console.log("Documentos en Causa Actualizado => ",dbDocumentos);
+        console.log("Todos los Documentos de la DB Actual => ",dbDocumentos);
+        let baseTemporal = dbDocumentos;
+        console.log("Datos de DB Temporal => ", baseTemporal);
         localStorage.setItem("documentos", JSON.stringify(dbDocumentos));
-        console.log("Documentos de DB => ", baseDocumentos);
     }
+    listadoDocumentosRecibidos();
 }
 
 const creaIndiceDocumento = () =>{
@@ -86,6 +88,7 @@ const enviarFormulario = (email, domicilioReal, mensaje, tipoDocumento, archivo,
     almacenar.guardarDescargo(almacenar);
     console.log("Capturo Mensaje y almaceno como Objeto: =>",almacenar);
     guardarDBDocumentosLS(baseDocumentos, almacenar);
+    location.href="./causa-detalles.html";
 };
 
 const recuperarDBLocalS = (idPersona) => {

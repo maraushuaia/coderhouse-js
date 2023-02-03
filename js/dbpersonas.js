@@ -1,5 +1,5 @@
 const usuariosGlobales = [
-    {id:1, dniPersona:1234, nombre: "Rodrigo"},
+    {id:1, dniPersona:20188165460, nombre: "Rodrigo"},
     {id:2, dniPersona:12345, nombre: "Jonatan"},
     {id:3, dniPersona:123456, nombre: "Franco"},
     {id:4, dniPersona:1234567, nombre: "Maximiliano"},

@@ -45,3 +45,8 @@ const renderCausasAntecedentes = (cuil) => {
 }
 
 renderCausasAntecedentes(usuario());
+
+const verDetalles = (idCausa) => {
+    guardarCausaSeleccionadaSS(idCausa);
+    location.href="./causa-detalles.html";
+}

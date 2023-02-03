@@ -8,14 +8,12 @@ const buscarCausaSeleccionadaSL = () => {
     return JSON.parse(sessionStorage.getItem("cauSelect"));
 }
 
-
-const verDetalles = (idCausa) => {
-    
+const muestraDetalles = () => {
     let mostrarDetalles = "";
-    guardarCausaSeleccionadaSS(idCausa);
-
     //Busco todos los antecedentes de la persona
     let antecedentes = restaurarAntecedentesLocalStorage(usuario());
+
+    let idCausa = buscarCausaSeleccionadaSL();
 
     //Busco que la causa exista, para luego "mostrarDetalles"
     let encontrado = antecedentes.some(encontrado => idCausa == encontrado.idCausa);
@@ -30,7 +28,7 @@ const verDetalles = (idCausa) => {
     console.log("Busco causa ID NRO.: "+idCausa);
     console.log("¿Causa encontrada?: "+encontrado);
     console.log("Objeto de la Causa Encontrada: ", causa);
-
+  
     //A continuación dibujo una serie de tabs con todos los datos de la causa
     mostrarDetalles += `<div class="row row-cols-1 mb-3 pt-3">
                             <!-- Nav tabs -->
@@ -40,7 +38,7 @@ const verDetalles = (idCausa) => {
                                         <a class="nav-link active" data-bs-toggle="tab" href="#home">Carátula</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" data-bs-toggle="tab" href="#menu1">Documentos</a>
+                                        <a class="nav-link" data-bs-toggle="tab" href="#menu1">Documentos del Juzgado</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" data-bs-toggle="tab" href="#menu2">Movimientos</a>
@@ -199,5 +197,7 @@ const verDetalles = (idCausa) => {
                                     </div>
                                 </div>
                         </div>`;
-                    document.getElementById("causasAntecedentes").innerHTML = mostrarDetalles;
+                    document.getElementById("mostrarDetalles").innerHTML = mostrarDetalles;
  }
+
+muestraDetalles();

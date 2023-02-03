@@ -1,4 +1,4 @@
-const listadoDocumentosEnviados = () => {
+const listadoDocumentosRecibidos = () => {
     let imprimirListado = "";
 
     if (buscarDescargosCausa(buscarCausaSeleccionadaSL(), usuario()) !== null) {
@@ -47,4 +47,4 @@ const listadoDocumentosEnviados = () => {
     }
 }
 
-listadoDocumentosEnviados();
+listadoDocumentosRecibidos();
