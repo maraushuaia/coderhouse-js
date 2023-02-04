@@ -1,32 +1,22 @@
-// Guardo en SESSION STORAGE el ID de la Card y Causa Seleccionada
-// Esa info la utilizo para luego indexar los descargos de cada causa
-const guardarCausaSeleccionadaSS = (idCausa) => {
-    sessionStorage.setItem("cauSelect", JSON.stringify(idCausa));
-};
-
-const buscarCausaSeleccionadaSL = () => {
-    return JSON.parse(sessionStorage.getItem("cauSelect"));
-}
 
 const muestraDetalles = () => {
     let mostrarDetalles = "";
     //Busco todos los antecedentes de la persona
     let antecedentes = restaurarAntecedentesLocalStorage(usuario());
 
+    //Busco el ID de causa que usaré para mostrar detalles
     let idCausa = buscarCausaSeleccionadaSL();
 
-    //Busco que la causa exista, para luego "mostrarDetalles"
-    let encontrado = antecedentes.some(encontrado => idCausa == encontrado.idCausa);
-
-    // Levanto la información guardada en el ARRAY de Antecedentes de la persona,
-    // buscando solo los datos de la causa seleccionada y lo guardo en variable "causa"
+    /*
+        Levanto la información guardada en el ARRAY de Antecedentes de la persona,
+        buscando solo los datos de la causa seleccionada y lo guardo en variable "causa"
+    */
     let causa = antecedentes.find(causa => idCausa == causa.idCausa);
 
     //Estos mensajes me sirven para ver en consola si los parametros se reciben correctamente
     console.log("Haz ingresado en el detalle de una causa. Sus datos son los siguientes:");
     console.log("Busco causas del CUIL: "+usuario());
     console.log("Busco causa ID NRO.: "+idCausa);
-    console.log("¿Causa encontrada?: "+encontrado);
     console.log("Objeto de la Causa Encontrada: ", causa);
   
     //A continuación dibujo una serie de tabs con todos los datos de la causa

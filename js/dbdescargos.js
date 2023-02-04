@@ -50,8 +50,12 @@ const eliminarDescargo = (idDocumento, idCausa) => {
         console.log("Datos de DB Temporal => ", baseTemporal);
         localStorage.setItem("documentos", JSON.stringify(dbDocumentos));
     }
-    listadoDocumentosRecibidos();
 }
+
+/*
+    Creo un indice incremental para identificar los documentos enviados por Formulario de esta forma
+    me es más facil determinar qué documento se debe eliminar cuando la persona lo desea
+*/
 
 const creaIndiceDocumento = () =>{
     let indiceActual = JSON.parse(localStorage.getItem("indice"));
@@ -63,10 +67,9 @@ const creaIndiceDocumento = () =>{
     return siguienteIndice;
 }
 
-const causaSeleccionada = () =>{
-    return JSON.parse(sessionStorage.getItem("cauSelect"));
-};
-
+/*
+    Capturo datos del formulario de envio de "Documentos" y procedo a guardar en Local Storage
+*/
 const enviarDescargo = () => {
     const formulario = document.getElementById("enviaDescargo");
     formulario.onsubmit = (event) => {
@@ -77,18 +80,14 @@ const enviarDescargo = () => {
         let tipoDocumento = document.getElementById("tipoContacto").value;
         let archivo = document.getElementById("formArchivo").value;
         let fechaEnvio = new Date();
-        enviarFormulario(email, domicilioReal, mensaje, tipoDocumento, archivo, fechaEnvio);
+        let almacenar = new documento(creaIndiceDocumento(),buscarCausaSeleccionadaSL(),usuario(),email, domicilioReal, mensaje, tipoDocumento, archivo, fechaEnvio);
+        almacenar.guardarDescargo(almacenar);
+        console.log("Capturo Mensaje y almaceno como Objeto: =>",almacenar);
+        guardarDBDocumentosLS(baseDocumentos, almacenar);
+        location.href="./causa-detalles.html";
     }
     console.log("Opero con el usuario CUIL: "+usuario());
-    console.log("Incorporaré un documento en la causa ID NRO.: ", causaSeleccionada());
-};
-
-const enviarFormulario = (email, domicilioReal, mensaje, tipoDocumento, archivo, fechaEnvio) => {
-    let almacenar = new documento(creaIndiceDocumento(),causaSeleccionada(),usuario(),email, domicilioReal, mensaje, tipoDocumento, archivo, fechaEnvio);
-    almacenar.guardarDescargo(almacenar);
-    console.log("Capturo Mensaje y almaceno como Objeto: =>",almacenar);
-    guardarDBDocumentosLS(baseDocumentos, almacenar);
-    location.href="./causa-detalles.html";
+    console.log("Incorporaré un documento en la causa ID NRO.: ", buscarCausaSeleccionadaSL());
 };
 
 const recuperarDBLocalS = (idPersona) => {

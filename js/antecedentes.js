@@ -1,14 +1,12 @@
-// // Creo el renderizado de los antecedentes de una persona
-// Para ello busco con el CUIL de la persona 
 
 const renderCausasAntecedentes = (cuil) => {
     console.log("Muestro los antecedentes de la persona.!", cuil);
     const causas = restaurarAntecedentesLocalStorage(cuil);
     let imprimir = "";
-        
-    // Si la persona posee antecedentes los imprimo, caso contrario informo que no tiene en curso
-    //<input type="submit" value="Ver detalles" onClick="buscarDetalles(${causa.idCausa},usuario());" class="w-100 btn btn-lg btn-primary>
-    // <button type="submit" onClick="buscarDetalles(${causa.idCausa},usuario());" class="w-100 btn btn-lg btn-primary">Ver detalles</button>
+       
+    /*
+        Si la persona posee antecedentes los imprimo, caso contrario informo que no tiene causa en curso
+    */
 
     if (causas != null) { 
         for (let causa of causas) {
@@ -45,6 +43,10 @@ const renderCausasAntecedentes = (cuil) => {
 }
 
 renderCausasAntecedentes(usuario());
+
+/*
+    Con este proceso almaceno en Session Storage la ID de causa que mostraré el Detalle al redirigirlo
+*/
 
 const verDetalles = (idCausa) => {
     guardarCausaSeleccionadaSS(idCausa);
