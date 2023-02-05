@@ -34,23 +34,26 @@ const buscarDescargosCausa = (idCausa, cuil) => {
     }
 }
 
+
+
 const eliminarDescargo = (idDocumento, idCausa) => {
     console.log("Entró al proceso de eliminar Documento.");
-    
     let dbDocumentos = restaurarDocumentosLS();
 
     let posicion = dbDocumentos.findIndex(eliminar =>
         ((eliminar.idDocumento === idDocumento) && (eliminar.idCausa === idCausa)))
-    
-    if (posicion >= 0) {
+
+        if (posicion >= 0) {
         console.log("Se encontró el documento en la posición: ", posicion);
         dbDocumentos.splice(posicion,1);
         console.log("Todos los Documentos de la DB Actual => ",dbDocumentos);
         let baseTemporal = dbDocumentos;
         console.log("Datos de DB Temporal => ", baseTemporal);
         localStorage.setItem("documentos", JSON.stringify(dbDocumentos));
-    }
-}
+
+        location.reload();
+        }
+};
 
 /*
     Creo un indice incremental para identificar los documentos enviados por Formulario de esta forma
@@ -84,10 +87,12 @@ const enviarDescargo = () => {
         almacenar.guardarDescargo(almacenar);
         console.log("Capturo Mensaje y almaceno como Objeto: =>",almacenar);
         guardarDBDocumentosLS(baseDocumentos, almacenar);
-        location.href="./causa-detalles.html";
+        
+        location.reload(200);
     }
     console.log("Opero con el usuario CUIL: "+usuario());
     console.log("Incorporaré un documento en la causa ID NRO.: ", buscarCausaSeleccionadaSL());
+    
 };
 
 const recuperarDBLocalS = (idPersona) => {
